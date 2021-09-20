@@ -1,0 +1,27 @@
+1. Install Composer :
+https://getcomposer.org/
+
+2. Go through the Lumen Documentation
+https://lumen.laravel.com/docs/8.x
+
+3. Create Project 
+composer create-project --prefer-dist laravel/lumen backendserver-api
+
+4. Install lumen generator 
+composer require flipbox/lumen-generator
+
+5. Generate App Key
+php artisan key:generate
+
+To Create an API you need : Model, Controller and migration File 
+
+cmd1 : php artisan make:model Post -fmc
+Do changes in migration file 
+To migrate Database : php artisan migrate
+
+Do factory changes 
+'title'=>$this->faker->sentence,
+'body'=>$this->faker->paragraph
+##############
+php artisan tinker 
+App\Models\Post::factory()->count(10)->create

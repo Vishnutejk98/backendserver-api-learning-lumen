@@ -13,6 +13,10 @@ composer require flipbox/lumen-generator
 5. Generate App Key
 php artisan key:generate
 
+6. Run the project 
+php -S localhost:8000 -t public
+
+
 To Create an API you need : Model, Controller and migration File 
 
 cmd1 : php artisan make:model Post -fmc
@@ -25,3 +29,30 @@ Do factory changes
 ##############
 php artisan tinker 
 App\Models\Post::factory()->count(10)->create
+
+JWT Authentication
+----------------------
+https://jwt-auth.readthedocs.io/en/develop/lumen-installation/
+composer require tymon/jwt-auth
+php artisan jwt:secret
+
+
+
+API : http://localhost:8000/api/login 
+Requiered Parmeter : email and password 
+
+API : http://localhost:8000/api/logout
+Requiered Authorization : Bearer token : Access Token 
+
+ 
+
+API : http://localhost:8000/api/refreshToken 
+Requiered Parmeter : refersh_toke 
+
+ 
+
+API's with Authentication with bearer token 
+GET : http://localhost:8000/api/posts - list all the post 
+POST : http://localhost:8000/api/posts - create the post (title and body - requiered parameters)
+PUT : http://localhost:8000/api/posts/id - update (title and body - requiered parameters)
+DELETE : http://localhost:8000/api/posts/id - delete 

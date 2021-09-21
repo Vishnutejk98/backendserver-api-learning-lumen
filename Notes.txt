@@ -56,3 +56,6 @@ GET : http://localhost:8000/api/posts - list all the post
 POST : http://localhost:8000/api/posts - create the post (title and body - requiered parameters)
 PUT : http://localhost:8000/api/posts/id - update (title and body - requiered parameters)
 DELETE : http://localhost:8000/api/posts/id - delete 
+
+
+Query Notes : https://laravel.com/docs/8.x/queries

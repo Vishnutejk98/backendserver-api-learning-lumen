@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 class AuthController extends Controller
 {
-    public function login(Request $request)
-    {
+    public function login(Request $request,Exception $e)
+    {   if ($e instanceof MethodNotAllowedHttpException) {
+        return response()->json(['status' => 'error', 'message' => 'Method Not Allowed']);
+         }
         $email = $request->email;
         $password = $request->password;
 

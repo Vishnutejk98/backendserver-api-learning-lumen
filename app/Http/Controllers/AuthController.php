@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Facades\Config;
 
 class AuthController extends Controller
 {
     public function login(Request $request)
-    {  
+    {   Config::set('database.default', 'mysql');
+        DB::reconnect('mysql');
         $email = $request->email;
         $password = $request->password;
 
@@ -30,7 +33,8 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function me()
-    {
+    {   Config::set('database.default', 'mysql');
+        DB::reconnect('mysql');
         return response()->json(auth()->user());
     }
 
@@ -40,7 +44,8 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout()
-    {
+    {   Config::set('database.default', 'mysql');
+        DB::reconnect('mysql');
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
@@ -52,7 +57,8 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function refresh()
-    {
+    {   Config::set('database.default', 'mysql');
+        DB::reconnect('mysql');
         return $this->respondWithToken(auth()->refresh());
     }
 
@@ -66,7 +72,8 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    {
+    {   Config::set('database.default', 'mysql');
+        DB::reconnect('mysql');
         $name = $request->name;
         $email = $request->email;
         $password = $request->password;
